@@ -2,7 +2,7 @@
 name: 프로젝트 전용 기타 사항
 about: 해당 프로젝트의 간단한 기타 사항에 대한 이슈 정리
 title: "[ETC]"
-labels: bug
+labels: etc
 assignees: tae2089
 
 ---
