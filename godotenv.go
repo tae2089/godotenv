@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
 )
 
 func LoadEnv() error {
@@ -16,10 +17,15 @@ func LoadEnv() error {
 
 	scanner := bufio.NewScanner(envFile)
 	for scanner.Scan() {
-		fmt.Println(scanner.Text())
+		split(scanner.Text())
 	}
 	if err := scanner.Err(); err != nil {
 		return err
 	}
 	return nil
+}
+
+func split(envText string) {
+	envs := strings.Split(envText, "=")
+	fmt.Println("key: ", envs[0], " value: ", envs[1])
 }
