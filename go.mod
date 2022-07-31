@@ -1,4 +1,4 @@
-module godotenv
+module github.com/tae2089/godotenv
 
 go 1.18
 
