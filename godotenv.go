@@ -28,6 +28,27 @@ func LoadEnv() error {
 	return nil
 }
 
+func LoadEnvByFileLocation(fileLocation string) error {
+	envFile, err := os.Open(fileLocation)
+
+	if err != nil {
+		return err
+	}
+	defer envFile.Close()
+
+	scanner := bufio.NewScanner(envFile)
+	fileEnvMap := map[string]string{}
+	for scanner.Scan() {
+		key, value := split(scanner.Text())
+		fileEnvMap[key] = value
+	}
+	registerEnv(fileEnvMap, false)
+	if err := scanner.Err(); err != nil {
+		return err
+	}
+	return nil
+}
+
 func split(envText string) (key, value string) {
 	envs := strings.Split(envText, "=")
 	fmt.Println("key: ", envs[0], " value: ", envs[1])
