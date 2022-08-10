@@ -19,3 +19,10 @@ func TestLoadEnv(t *testing.T) {
 	assert.Equal(t, "1", value)
 	assert.Equal(t, err, nil)
 }
+
+func TestLoadEnvByFileLocation(t *testing.T) {
+	err := godotenv.LoadEnvByFileLocation(".env.development")
+	value := os.Getenv("TEST")
+	assert.Equal(t, "dev", value)
+	assert.Equal(t, err, nil)
+}
