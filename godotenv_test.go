@@ -22,7 +22,7 @@ func TestLoadEnv(t *testing.T) {
 
 func TestLoadEnvByFileLocation(t *testing.T) {
 	err := godotenv.LoadEnvByFileLocation(".env.development")
-	value := os.Getenv("TEST")
+	value := os.Getenv("TEST2")
 	assert.Equal(t, "dev", value)
 	assert.Equal(t, err, nil)
 }
